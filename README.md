@@ -2,7 +2,7 @@
 This is a script that parses property listings (on Redfin) and analyzes them.  This script is targeted for 
 analyzing investment properties, with a focus on multi-family apartment buildings.
 
-This script currently has 2 sets of options:
+This script currently has 2 sets of functionalities:
 1. Parses and analyzes a Redfin property listing and outputs as JSON or an XLS spreadsheet
 2. Parses a Redfin property listings url (with multiple properties), analyzes all of them, and finds the best ones
 
