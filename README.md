@@ -1,9 +1,9 @@
 # prop_analyze
 Script that parses property listings (on Redfin) and analyzes them
 
-# Installation
+## Installation
 ```python
 pip install -r requirements.txt
 ```
-# Usage
+## Usage
 TODO
