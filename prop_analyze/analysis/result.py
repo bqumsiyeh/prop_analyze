@@ -18,4 +18,4 @@ class AnalysisResult:
     debt_coverage: float
 
     def to_json(self) -> str:
-        return json.dumps(self, indent=4, default=lambda o: o.__dict__)
+        return json.dumps(self, indent=4, default=lambda o: o.display_name if isinstance(o, Property) else o.__dict__)
