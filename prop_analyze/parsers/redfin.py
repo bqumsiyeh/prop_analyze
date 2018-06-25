@@ -9,7 +9,7 @@ from prop_analyze.property import Property, Utilities
 
 RF_BASE_URL = 'https://www.redfin.com'
 RF_ITEM_PROP = 'itemprop'
-
+MAX_LISTINGS = 3000
 
 class RFScrapeResult:
     property: Property
@@ -365,6 +365,7 @@ class RFListingScraper(RFScraper):
         # Dig out the API url that gives us all of the Listings
         api_url = re.findall('\\\\u002Fstingray\\\\u002Fapi\\\\u002Fgis\?.*?(?=\")', self.page_txt)[0]
         api_url = api_url.encode('utf-8').decode('unicode_escape')
+        api_url = re.sub('num_homes=\d+', f'num_homes={MAX_LISTINGS}', api_url)
         api_url = f'{RF_BASE_URL}{api_url}'
 
         # Make the request
