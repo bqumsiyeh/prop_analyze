@@ -207,8 +207,17 @@ class RFPropertyScraper(RFScraper):
         Parse out the number of units from the extra data and set it on the property
         :return:
         """
-        values = self._get_amenity_from_extra_data('BuildingInformation', 'TNU') or \
-            self._get_amenity_from_extra_data('Multi-FamilyInformation', 'UNT')
+        values = None
+        combos = [
+            ('BuildingInformation', 'TNU'),
+            ('Multi-FamilyInformation', 'UNT'),
+            ('Multi-FamilyFeatures', 'INCPTUNL')
+        ]
+
+        for combo in combos:
+            values = self._get_amenity_from_extra_data(combo[0], combo[1])
+            if values:
+                break
 
         if values:
             self.property.num_units = int(values[0])
@@ -229,8 +238,17 @@ class RFPropertyScraper(RFScraper):
         while i < self.property.num_units and units_accounted_for < self.property.num_units:
             rent_found = False
 
-            unit_rent_arr = self._get_amenity_from_extra_data(f'Unit{i+1}Information', f'RT{i+1}') or \
-                self._get_amenity_from_extra_data(f'Unit{i+1}Information', f'IN{i+1}')
+            unit_rent_arr = None
+            combos = [
+                (f'Unit{i+1}Information', f'RT{i+1}'),
+                (f'Unit{i+1}Information', f'IN{i+1}'),
+                (f'Unit{i+1}Information', f'INCPU{i+1}_RT')
+            ]
+
+            for combo in combos:
+                unit_rent_arr = self._get_amenity_from_extra_data(combo[0], combo[1])
+                if unit_rent_arr:
+                    break
 
             if unit_rent_arr:
                 try:
