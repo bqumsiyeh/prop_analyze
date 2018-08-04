@@ -211,7 +211,9 @@ class RFPropertyScraper(RFScraper):
         combos = [
             ('BuildingInformation', 'TNU'),
             ('Multi-FamilyInformation', 'UNT'),
-            ('Multi-FamilyFeatures', 'INCPTUNL')
+            ('Multi-FamilyFeatures', 'INCPTUNL'),
+            ('Multi-FamilyFeatures', 'INCPTUNL'),
+            ('Multi-UnitInformation', 'MFM2_UNIT')
         ]
 
         for combo in combos:
@@ -242,7 +244,8 @@ class RFPropertyScraper(RFScraper):
             combos = [
                 (f'Unit{i+1}Information', f'RT{i+1}'),
                 (f'Unit{i+1}Information', f'IN{i+1}'),
-                (f'Unit{i+1}Information', f'INCPU{i+1}_RT')
+                (f'Unit{i+1}Information', f'INCPU{i+1}_RT'),
+                (f'Unit{i+1}Information', f'MFM2_U{i+1}_RT'),
             ]
 
             for combo in combos:
